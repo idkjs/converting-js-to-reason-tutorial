@@ -8,8 +8,6 @@ var ReasonReact = require("reason-react/src/ReasonReact.js");
 
 var component = ReasonReact.statelessComponent("IndexPage");
 
-console.log(Amplify.configure);
-
 function text(prim) {
   return prim;
 }

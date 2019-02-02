@@ -129,4 +129,3 @@ So the callback calls `navigate` and lets gives any Js erros using the `Js.Exn.E
 So know we are calling `auth.js` from our reason file which is calling back out to javascript files. **Interop Madness** people. You are not ready!!!
 
 Incidentally, as most of you know, there are plenty of ways to do this. I am just doing piecemiel so you can see how easy it is without making huge changes. By the end we will have refactored to get the full power of reasonml.
-

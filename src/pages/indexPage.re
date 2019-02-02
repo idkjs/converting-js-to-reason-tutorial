@@ -1,5 +1,5 @@
 let component = ReasonReact.statelessComponent("IndexPage");
-Amplify.configure |> Js.log;
+Amplify.configure;
 
 /* Js.log(Amplify.configure); */
 /* create a text element so we dont have to keep writing ReasonReact.string.
