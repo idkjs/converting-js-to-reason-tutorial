@@ -1,1 +1,1 @@
-src/pages/indexPage.cmj :
+src/pages/indexPage.cmj : src/utils/Amplify.cmj src/utils/Amplify.cmi
