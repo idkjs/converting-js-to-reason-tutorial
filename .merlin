@@ -11,6 +11,8 @@ S /Users/prisc_000/working/RNAMPLIFY/gatsby-amplify-auth/node_modules/gatsby-lin
 B /Users/prisc_000/working/RNAMPLIFY/gatsby-amplify-auth/node_modules/gatsby-link-reason/lib/ocaml
 S src/pages
 B lib/bs/src/pages
+S src/components
+B lib/bs/src/components
 S src/utils
 B lib/bs/src/utils
 ####BSB GENERATED: NO EDIT}

@@ -12,7 +12,7 @@ bsb_dir_group = 0
 refmt = /Users/prisc_000/working/RNAMPLIFY/gatsby-amplify-auth/node_modules/bs-platform/lib/refmt.exe
 reason_react_jsx = -ppx '/Users/prisc_000/working/RNAMPLIFY/gatsby-amplify-auth/node_modules/bs-platform/lib/reactjs_jsx_ppx_2.exe'
 refmt_flags = --print binary
-bsc_lib_includes = -I src/utils -I src/pages
+bsc_lib_includes = -I src/utils -I src/components -I src/pages
 rule build_ast_and_module_sets_from_re
   command = ${bsc} -pp "${refmt} ${refmt_flags}" ${reason_react_jsx}  ${ppx_flags} ${warnings} ${bsc_flags} -c -o ${out} -bs-syntax-only -bs-binary-ast -impl ${in}
   description = [34mBuilding[39m [2m${out}[22m
@@ -30,9 +30,14 @@ rule build_cmj_cmi
 build src/pages/indexPage.cmj |  $src_root_dir/src/pages/indexPage.bs.js src/pages/indexPage.cmi : build_cmj_cmi src/pages/indexPage.mlast
   bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
   bs_package_flags = $bs_package_flags  -bs-package-output commonjs:src/pages
+build src/components/Header.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/components/Header.re
+build src/components/Header.mlast.d : build_deps src/components/Header.mlast
+build src/components/Header.cmj |  $src_root_dir/src/components/Header.bs.js src/components/Header.cmi : build_cmj_cmi src/components/Header.mlast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:src/components
 build src/utils/Amplify.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/utils/Amplify.re
 build src/utils/Amplify.mlast.d : build_deps src/utils/Amplify.mlast
 build src/utils/Amplify.cmj |  $src_root_dir/src/utils/Amplify.bs.js src/utils/Amplify.cmi : build_cmj_cmi src/utils/Amplify.mlast
   bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
   bs_package_flags = $bs_package_flags  -bs-package-output commonjs:src/utils
-build build.ninja : phony  ||  src/utils/Amplify.mlast.d src/pages/indexPage.mlast.d
+build build.ninja : phony  ||  src/utils/Amplify.mlast.d src/components/Header.mlast.d src/pages/indexPage.mlast.d

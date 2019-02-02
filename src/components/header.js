@@ -32,7 +32,7 @@ const Header = ({ siteTitle }) => (
         isLoggedIn() && (
           <p
             onClick={
-              () => Auth.signOut().then(logout(() => navigate('/app/login'))).catch(err => console.log('eror:', err))
+              () => Auth.signOut().then(logout(() => navigate('/app/login'))).catch(err => console.log('error:', err))
             }
             style={styles.link}
           >Sign Out</p>
