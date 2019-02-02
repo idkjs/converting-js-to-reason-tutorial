@@ -10,10 +10,10 @@ This auth starter implements a basic authentication flow for signing up signing 
 
 ## Getting Started
 
-1. Create the project
+1. Create the project using the version from the pull request to fix the graphql issue.
 
 ```sh
-gatsby new gatsby-amplify-auth https://github.com/dabit3/gatsby-auth-starter-aws-amplify
+gatsby new gatsby-amplify-auth https://github.com/shawnmmatthews/gatsby-auth-starter-aws-amplify.git
 ```
 
 2. Change into the new directory
@@ -64,7 +64,7 @@ amplify init
 amplify push
 ```
 
-7. Then you can run it by:
+7. Then you can run it to make sure it works:
 ```sh
 gatsby develop
 ```
