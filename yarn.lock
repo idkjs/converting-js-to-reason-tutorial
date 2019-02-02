@@ -3999,6 +3999,11 @@ gatsby-cli@^2.0.0-beta.12:
     yargs "^11.1.0"
     yurnalist "^0.2.1"
 
+gatsby-link-reason@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/gatsby-link-reason/-/gatsby-link-reason-2.0.0.tgz#87b9932097f2a1fb6089241a24766624fda4c226"
+  integrity sha512-cr7x0APH5isphQ72REgFgmzChZLTkQH2i5X190W3i8ayPt5IzP2n5K3WpDNI6+SYLzJC675+c0acsUMWXPXH+Q==
+
 gatsby-link@^2.0.0-beta.19:
   version "2.0.0-beta.19"
   resolved "https://registry.yarnpkg.com/gatsby-link/-/gatsby-link-2.0.0-beta.19.tgz#be7fac160fb68082abedea768dfd72672d1a3a5f"

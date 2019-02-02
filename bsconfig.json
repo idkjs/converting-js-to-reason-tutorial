@@ -3,7 +3,7 @@
   "reason": {
     "react-jsx": 2
   },
-  "bs-dependencies": ["reason-react"],
+  "bs-dependencies": ["reason-react","gatsby-link-reason"],
   "sources": [{
     "dir": "src",
     "subdirs": true

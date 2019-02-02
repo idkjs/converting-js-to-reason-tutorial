@@ -125,7 +125,7 @@ After doing that, I had to re-run `yarn watch` for the index.re to compile. I th
 
 As we are going to be using this file on the javascript side, we need to export it in a way that javascript can use it. This is called [interop](https://reasonml.github.io/reason-react/docs/en/interop#reactjs-using-reasonreact) and we export it by add the following line to the bottom of our file.
 
-```js
+```reason
 let default =
 ReasonReact.wrapReasonForJs(~component, jsProps => make(jsProps##children));
 ```
@@ -142,20 +142,4 @@ Once I did this I got a couple of warnings errors that I had to work through eve
 
 Yes, people, this is how development looks for me. Feel free to suggest a better way if there is one. Thanks in advance.
 
-Now run `yarn dev` or `gatsby develop` and check your browser. We should have the same result as we previously had from `index.js`.
-
-## Hosting with the AWS Amplify Console
-
-The AWS Amplify Console provides continuous deployment and hosting for modern web apps (single page apps and static site generators). Continuous deployment allows developers to deploy updates to their web app on every code commit to their Git repository. If the build succeeds, the app is deployed and hosted on a global CDN with an *amplifyapp.com* domain. The Amplify Console offers globally available CDNs, easy custom domain setup, feature branch deployments, and password protection.
-
-1. Push your code to a Git repository of your choice.
-1. Login to the [AWS Amplify Console](https://console.aws.amazon.com/amplify/home) and choose **Connect app**
-1. Connect your repository and branch.
-1. Accept the default build settings.
-1. Give the Amplify Console permission to deploy backend resources with your frontend. This will allow the Console to detect changes to your backend on every code commit. If you do not have a service role, follow the prompts to create one.
-1. Review your changes and then choose **Save and deploy**. You app will now be available at `https://master.unique-id.amplifyapp.com`.
-
-<!-- <img src="https://github.com/swaminator/gatsby-auth-starter-aws-amplify/blob/master/src/images/amplify-console.gif" width="800"/> -->
-![Amplify Console](src/images/amplify-console.gif)
-
-You can now continuously deploy changes to your frontend or backend and Amplify will automatically deploy those changes.
+Now run `yarn dev` or `gatsby develop` and check your browser. We should have the mostly the same result as we previously had from `index.js`. We have not yet implemented the imported `Layout.js` or `Amplify.configure` function. We will do that next.
