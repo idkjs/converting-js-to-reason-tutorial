@@ -35,9 +35,14 @@ build src/components/Header.mlast.d : build_deps src/components/Header.mlast
 build src/components/Header.cmj |  $src_root_dir/src/components/Header.bs.js src/components/Header.cmi : build_cmj_cmi src/components/Header.mlast
   bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
   bs_package_flags = $bs_package_flags  -bs-package-output commonjs:src/components
+build src/utils/AuthRe.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/utils/AuthRe.re
+build src/utils/AuthRe.mlast.d : build_deps src/utils/AuthRe.mlast
+build src/utils/AuthRe.cmj |  $src_root_dir/src/utils/AuthRe.bs.js src/utils/AuthRe.cmi : build_cmj_cmi src/utils/AuthRe.mlast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:src/utils
 build src/utils/Amplify.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/utils/Amplify.re
 build src/utils/Amplify.mlast.d : build_deps src/utils/Amplify.mlast
 build src/utils/Amplify.cmj |  $src_root_dir/src/utils/Amplify.bs.js src/utils/Amplify.cmi : build_cmj_cmi src/utils/Amplify.mlast
   bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
   bs_package_flags = $bs_package_flags  -bs-package-output commonjs:src/utils
-build build.ninja : phony  ||  src/utils/Amplify.mlast.d src/components/Header.mlast.d src/pages/indexPage.mlast.d
+build build.ninja : phony  ||  src/utils/Amplify.mlast.d src/utils/AuthRe.mlast.d src/components/Header.mlast.d src/pages/indexPage.mlast.d

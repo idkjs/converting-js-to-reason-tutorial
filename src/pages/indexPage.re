@@ -1,7 +1,10 @@
 let component = ReasonReact.statelessComponent("IndexPage");
 Amplify.configure;
-
 /* Js.log(Amplify.configure); */
+
+/* AuthRe.Env.isBrowser |> Js.log;
+AuthRe.Env.getPlatform() |> Js.log;
+AuthRe.store |> Js.log; */
 /* create a text element so we dont have to keep writing ReasonReact.string.
 So now we can do (text("Hi People")) instead of ReasonReact.string("Hi People")
 */

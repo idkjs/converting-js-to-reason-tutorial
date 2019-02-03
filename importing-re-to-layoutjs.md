@@ -1,4 +1,4 @@
-# Creating Layout Component in ReasonML
+# Importing Header.re to Layout.js Component
 
 ## Where Do We Start
 
@@ -129,3 +129,5 @@ So the callback calls `navigate` and lets gives any Js erros using the `Js.Exn.E
 So know we are calling `auth.js` from our reason file which is calling back out to javascript files. **Interop Madness** people. You are not ready!!!
 
 Incidentally, as most of you know, there are plenty of ways to do this. I am just doing piecemiel so you can see how easy it is without making huge changes. By the end we will have refactored to get the full power of reasonml.
+
+I was going to try to re-create `Helmet.js` in reason just to systematically go through this with you all but it got a bit convuleted. I went to get some help on the [discord](https://discordapp.com/channels/235176658175262720/235176658175262720) which I want to [invite](https://discord.gg/vt3FzA3) you to join. In the next post, lets take a detour into getting help.
