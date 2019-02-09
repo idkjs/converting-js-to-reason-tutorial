@@ -1,4 +1,4 @@
-# Converting Js to ReasonML - Part 1
+# Converting JS to ReasonML with **Bindings** - Part 1
 
 ![Kublai Kahn](https://raw.githubusercontent.com/idkjs/converting-js-to-reason-tutorial/master/images/medium-header.jpeg)
 

@@ -1,5 +1,5 @@
 
-# Converting Javascript to ReasonML - Part 2
+# Converting JS to ReasonML with **Bindings** - Part 2
 
 ## Creating AWS Amplify **Bindings** for our IndexPage
 

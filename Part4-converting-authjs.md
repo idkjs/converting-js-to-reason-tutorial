@@ -1,4 +1,4 @@
-# Converting Js to ReasonML - Part 4
+# Converting JS to ReasonML with Bindings - Part 4
 
 ## Converting auth.js to Auth.re
 
@@ -8,15 +8,15 @@ In [Part 2](), we wrote bindings in `Header.re` to the `auth.js` file that came 
 
 ## The Reason Community
 
-The ReasonML community is the best every. As a clown, big time imposter syndrome programmer, there was no better cure for me than the [Reason Community resources](https://reasonml.github.io/docs/en/community).
+The ReasonML community is the best ever. As a clown, big time imposter syndrome programmer, there was no better cure for me than the [Reason Community resources](https://reasonml.github.io/docs/en/community).
 
 Everything I am able to tell you or even remotely seem like I understand is a direct result of this community to whom I hereby, publicly and sincerely say, thank you.
 
-So in the previous post, I was going to bind the `react-helmet` library and then re-import it to `layout.js` just to get you one more look at writing a binding. This meant, binding the js version of `react-helmut` in Reason and re-importing into `layout.js`. This is totally doable and there is an example in the reason materials. Still, I didn't want to waste to much time on it so I asked in the [ReasonML](https://discordapp.com/channels/235176658175262720/235176658175262720) discord channel. My man, [@yawaramin](https://mobile.twitter.com/yawaramin) quickly provided the following answer:
+So in the previous post, I was going to bind the `react-helmet` library and then re-import it to `layout.js` just to get you one more look at writing a binding. This meant, binding the js version of `react-helmet` in Reason and re-importing into `layout.js`. This is totally doable and there is an example in the reason examples somewhere. Still, I didn't want to waste to much time on it so I asked in the [ReasonML](https://discordapp.com/channels/235176658175262720/235176658175262720) discord channel. My man, [@yawaramin](https://mobile.twitter.com/yawaramin) quickly provided the following answer:
 
 > well, components wrapped using wrapJsForReason are meant to be used by Reason code, not by JS code. they already exist as JS code so you would just use e.g. import Helmet from 'react-helmet'
 
-I decided then that you all got the point on bindings for now and to move on to the next thing.
+I decided then that you all got the point on interop for now and to move on to the next thing.
 
 ## Back to Auth.re
 
@@ -48,7 +48,7 @@ export const logout = callback => {
 }
 ```
 
-Its six statements, four of which are exported. I saw this and said, this will be easy. As soon as I said that, I should have known I was wrong. This took me for a spin for about a day. I could not let it go and so I followed my programming rules. What are the rules? Well among them is, "Ask the damned question if you can't figure it out!". It will take you a lot less time in the Reason community because these guys make it their business to help. Additionally, you always learn something more by just studying how whoever is helping you did it. So I asked the question [here](https://reasonml.chat/t/help-converting-the-js-to-reasonml/1438?u=idkjs). I got two quick responses from [@yawaramin](https://mobile.twitter.com/yawaramin) and [@bsansouci](https://mobile.twitter.com/bsansouci), two of the baddest reasonml/ocaml devs out there. bsansouci might even be on the reasonml team, I don't know.
+It's six statements, four of which are exported. I saw this and said, this will be easy. As soon as I said that, I should have known I was wrong. This took me for a spin for about a day. I could not let it go and so I followed my programming rules. What are the rules? Well among them is, "Ask the damned question if you can't figure it out!". It will take you a lot less time in the Reason community because these guys make it their business to help. Additionally, you always learn something more by just studying how whoever is helping you did it. So I asked the question [here](https://reasonml.chat/t/help-converting-the-js-to-reasonml/1438?u=idkjs). I got two quick responses from [@yawaramin](https://mobile.twitter.com/yawaramin) and [@bsansouci](https://mobile.twitter.com/bsansouci), two of the baddest reasonml/ocaml devs out there. bsansouci might even be on the reasonml team, I don't know.
 
 This is what @yawaramin had to [say](https://reasonml.chat/t/help-converting-the-js-to-reasonml/1438/2?u=idkjs):
 

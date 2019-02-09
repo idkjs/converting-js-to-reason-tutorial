@@ -1,4 +1,8 @@
-# Importing Header.re to Layout.js Component
+# Converting JS to ReasonML with **Bindings** - Part 3
+
+## Importing Header.re to Layout.js Component
+
+![Kublai Kahn](https://raw.githubusercontent.com/idkjs/converting-js-to-reason-tutorial/master/images/medium-header.jpeg)
 
 ## Where Do We Start
 
@@ -15,11 +19,11 @@ So we need to a `StaticQuery`, `Header`, `Helmet` and to import some css.
 
 ## Header
 
-Let's start with creating the reason version of `Header.re`.
+Let's start with creating the ReasonML version of `Header.re`.
 
-Create `Header.re` in the `componets` dir.
+Create `Header.re` in the `components` directory.
 
-These are functions we need to convert.
+These are the functions we need to convert.
 ```js
 import { Link } from 'gatsby'
 import { navigate } from '@reach/router'
@@ -34,7 +38,8 @@ The last three we will create using bucklescript like we did before.
 ### ReachRouter's Navigate function
 
 For `navigate` from `@reach/router` we don't even have to look anything up.
-We know there is an export called `navigate` on the `@reach/router` module. So let try reading it outloud.
+We know there is an export called `navigate` on the `@reach/router` module. So let try talking through the binding outloud.
+
 "bucklescript get module `@reach/router` and access it with a function called `navigate` that takes a string. When you get the string, call the function on the `@reach/router` `navigate` function. `unit` is the keyword that calls the function for us."
 
 And this is what it looks like in code:
@@ -43,10 +48,11 @@ And this is what it looks like in code:
 [@bs.module "@reach/router"] external navigate: string => unit = "navigate";
 ```
 
-### Auth
+### The `auth.js` **binding**
 
-The `auth.js` is a module like any other. Instead of importing it, you wrote it yourself. So we call it the exact same way. Talking through out loud,
-""bucklescript get the module `auth` at `../utils/auth` path and access it with a function called `logout` that takes any old type `'a`. When you get the `'a` thingy, call the function on the `../utils/auth` module with the name `logout`. I'm giving you the `'a` type because this function takes a call back and I actually don't know how to type that correctly just yet so just take any old thing until i figure it out."
+The `auth.js` is a module like any other. Instead of importing it, you wrote it yourself.  Instead of importing it with npm, you wrote it yourself, or in this case, it came with [@dabit3's](https://mobile.twitter.com/dabit3/) boilerplate. So we call it in Reason the exact same way as if we were to call an imported dependency. Talking through it out loud,
+
+ > bucklescript get the module `auth` at `../utils/auth` path and access it with a function called `logout` that takes any old type `'a`. When you get the `'a` thingy, call the function on the `../utils/auth` module with the name `logout`. I'm giving you the `'a` type because this function takes a call back and I actually don't know how to type that correctly just yet so just take any old thing until i figure it out.
 
 For `isLoggedIn` create a function called `isLoggedIn` which expects to get  a boolean type back. Everytime I call it, immediately hit `isLoggedIn` at `../utils/auth` which should return a true or false."
 
