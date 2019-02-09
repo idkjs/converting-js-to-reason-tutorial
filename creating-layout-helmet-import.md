@@ -1,6 +1,9 @@
-# Creating Layout.js's Helmet Import
+# Creating Layout.js's Helmet Import - Part 3
 
-Create a file in `src/components` calle `Helmut.re`.
+![Kublai Kahn](https://raw.githubusercontent.com/idkjs/converting-js-to-reason-tutorial/master/images/medium-header.jpeg)
+
+
+Create a file in `src/components` called `Helmet.re`.
 
 Add this to it:
 
@@ -25,7 +28,7 @@ let make = (~title: option(string)=?, ~meta: option(array(metaField))=?, childre
 );
 ```
 
-Go back into `layout.js` and replace the `Helmut` import. Change:
+Go back into `layout.js` and replace the `Helmet` import. Change:
 
 ```js
 import Helmet from 'react-helmet'

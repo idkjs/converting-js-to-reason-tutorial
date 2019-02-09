@@ -128,6 +128,99 @@ So the callback calls `navigate` and lets gives any Js erros using the `Js.Exn.E
 
 So know we are calling `auth.js` from our reason file which is calling back out to javascript files. **Interop Madness** people. You are not ready!!!
 
+Here is what the working code looks like:
+
+```reason
+// Header.re
+type amplify;
+[@bs.module "@aws-amplify/auth/lib"] external amplify: amplify = "default";
+[@bs.send] external signOut: (amplify, unit) => unit = "signOut";
+
+/* this gets the `push` method off of the gatsby dep and works, so does the reach/router which mirros the orignal js. */
+[@bs.module "gatsby"] external push: string => unit = "push";
+[@bs.module "@reach/router"] external navigate: string => unit = "navigate";
+[@bs.module "../utils/auth"] external logout: ('a, unit) => unit = "logout";
+[@bs.module "../utils/auth"] external isLoggedIn: unit => bool = "isLoggedIn";
+
+module Styles = {
+  let container =
+    ReactDOMRe.Style.make(
+      ~background="rebeccapurple",
+      ~marginBottom="1.45rem",
+      (),
+    );
+  let headerContainer =
+    ReactDOMRe.Style.make(
+      ~margin="0 auto",
+      ~maxWidth="960px",
+      ~padding="1.45rem 1.0875rem",
+      (),
+    );
+  let headerTitle =
+    ReactDOMRe.Style.make(~color="white", ~textDecoration="none", ());
+
+  let link =
+    ReactDOMRe.Style.make(
+      ~color="white",
+      ~textDecoration="underline",
+      ~cursor="pointer",
+      (),
+    );
+};
+let component = ReasonReact.statelessComponent("Header");
+
+let make = (~siteTitle: string, _children) => {
+  ...component,
+  render: _self => {
+    // idea from here: https://github.com/xodio/xod/blob/ff7cd119660afbf4b0ea62dddff55f5087d8f150/packages/xod-tabtest/src/Tabtest.re#L87-L90
+    let callback =
+      try (() => navigate("/app/login")) {
+      | Js.Exn.Error(e) => (() => Js.log2("error", e))
+      };
+    <div style=Styles.container>
+      <div style=Styles.headerContainer>
+        <h1 style={ReactDOMRe.Style.make(~margin="0", ())}>
+          <GatsbyLink to_="/" style=Styles.headerTitle>
+            {ReasonReact.string(siteTitle)}
+          </GatsbyLink>
+        </h1>
+        {isLoggedIn() ?
+           <p
+             style=Styles.link
+             onClick={_event =>
+               signOut(amplify, ()) |> (() => logout(callback, ()))
+             }>
+             {ReasonReact.string("SignOut")}
+           </p> :
+           ReasonReact.null}
+      </div>
+    </div>;
+  },
+};
+
+[@bs.deriving abstract]
+type jsProps = {siteTitle: string};
+// https://reasonml.github.io/reason-react/docs/en/interop#reactjs-using-reasonreact
+let default =
+  ReasonReact.wrapReasonForJs(~component, jsProps =>
+    make(~siteTitle=jsProps->siteTitleGet, [||])
+  );
+```
+
+Go back into `src/layout.js` and replace the `Header` import. Change:
+
+```js
+import Header from './Header'
+```
+
+to:
+
+```js
+import Header from './Helmet.bs'
+```
+
+Run `gatsby develop` to refresh if it didn't. Rejoice!
+
 Incidentally, as most of you know, there are plenty of ways to do this. I am just doing piecemiel so you can see how easy it is without making huge changes. By the end we will have refactored to get the full power of reasonml.
 
-I was going to try to re-create `Helmet.js` in reason just to systematically go through this with you all but it got a bit convuleted. I went to get some help on the [discord](https://discordapp.com/channels/235176658175262720/235176658175262720) which I want to [invite](https://discord.gg/vt3FzA3) you to join. In the next post, lets take a detour into getting help.
+I was going to try to re-create `Helmet.js` in reason just to systematically go through this with you all but it got a bit convuleted. I went to get some help on the [discord](https://discordapp.com/channels/235176658175262720/235176658175262720) which I want to [invite](https://discord.gg/vt3FzA3) you to join. Important point on community help and mental health. I have rules to keep my spirit up when I get frustrated. In relevant part, if you haven't asked someone the question, you are the @$$hole in the room. So go to <www.stackoverflow.com> or <www.reason.chat> or Reason's Discord channel and ask the damned question. If it's an important problem, get the answer on stackoverflow or reason.chat because it will be easier to find later. I don't know how many times I have looked something up and come up on my own previous question or even answer to someone and found the answer while doing an internet or github search. Sharing helps everyone.

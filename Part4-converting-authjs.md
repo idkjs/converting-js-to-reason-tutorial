@@ -1,6 +1,10 @@
-# Converting auth.js to Auth.re
+# Converting Js to ReasonML - Part 4
 
-In the previous post, we wrote bindings in `Header.re` to the `auth.js` file that came with the boilerplate. The point was to show you how to write bindings. In this post, we will rewrite `auth.js` in Reason. But first...
+## Converting auth.js to Auth.re
+
+![Kublai Kahn](https://raw.githubusercontent.com/idkjs/converting-js-to-reason-tutorial/master/images/medium-header.jpeg)
+
+In [Part 2](), we wrote bindings in `Header.re` to the `auth.js` file that came with the boilerplate. The point was to show you how to write bindings. In this post, we will rewrite `auth.js` in Reason. But first...
 
 ## The Reason Community
 
@@ -162,7 +166,7 @@ type platform =
     | Node;
 ```
 
-`Browser` and `Node` aren't strings, nor references, nor some special data type. They're called "constructors" (or "tag"). The | bar separates each constructor.
+`Browser` and `Node` aren't strings, nor references, nor some special data type. They're called "constructors" (or "tag"). The `|` bar separates each constructor.
 
 Now we need to use our variant. Docs again:
 
@@ -246,4 +250,14 @@ Our `store` variable will now be inferred to be of type `store`. So it will expe
 
 The `getStore` function takes and identifier which is the string that identifies the key in localStorage that we want to retrieve. We could have hard coded it but this way its more reusable. `getStore` will check which platform we are on and switch based on our platform variant. If we are in the browser, it will try to retrieve the stored values for `gatsby` that we passed in. If we are in anything else, which is what `_`, says, return `Node`. So when we call `getStore` from `let store` we are going to switch based on what is returned. If `getStore` returns values, then we know we are in the browser and we should try to parse the returned values. If we get `None` back, well then no one is signed in and we call a `signOut` function to make sure the store is clear.
 
-So much going on here. I'm going to stop discussing this part of the `AuthRe.re`. Please check out the code for this part [here]() and ask any questions you might have. Don't be shy. We will both learn something from your questions.
+So much going on here. I'm going to stop discussing this part of the `AuthRe.re`. Please check out the code for this part at this tag: [creating-auth-re](https://github.com/idkjs/converting-js-to-reason-tutorial/tree/creating-auth-re) in the repo and ask any questions you might have. Don't be shy. We will both learn something from your questions.
+
+Note: It turns out that even though the code worked, `[@bs.val] external isBrowser: bool = "process.browser";` is not a thing because `process.browser` does not exist!
+
+After discussing with "the community" in the  [ReasonChat](https://reasonml.chat/t/help-converting-the-js-to-reasonml/1438/8?u=idkjs) I ended up changing it the following which does the same thing expect uses a real api!.
+
+```reason
+const isBrowser = typeof window !== `undefined`
+```
+
+Thank [@yawaramin](https://mobile.twitter.com/yawaramin) again.

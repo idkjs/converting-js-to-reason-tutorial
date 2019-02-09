@@ -142,4 +142,4 @@ Once I did this I got a couple of warnings errors that I had to work through eve
 
 Yes, people, this is how development looks for me. Feel free to suggest a better way if there is one. Thanks in advance.
 
-Now run `yarn dev` or `gatsby develop` and check your browser. We should have the mostly the same result as we previously had from `index.js`. We have not yet implemented the imported `Layout.js` or `Amplify.configure` function. We will do that next.
+Now run `yarn dev` or `gatsby develop` and check your browser. We should have the mostly the same result as we previously had from `index.js`. We have not yet implemented the imported `Layout.js` or `Amplify.configure` function. We might do that next.

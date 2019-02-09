@@ -38,11 +38,12 @@ let component = ReasonReact.statelessComponent("Header");
 let make = (~siteTitle: string, _children) => {
   ...component,
   render: _self => {
-    /* idea from here: https://github.com/xodio/xod/blob/ff7cd119660afbf4b0ea62dddff55f5087d8f150/packages/xod-tabtest/src/Tabtest.re#L87-L90 */
-    /* let callback =
-       try (() => push("/app/login")) {
-       | Js.Exn.Error(e) => (() => Js.log(e))
-       }; */
+    // idea from here: https://github.com/xodio/xod/blob/ff7cd119660afbf4b0ea62dddff55f5087d8f150/packages/xod-tabtest/src/Tabtest.re#L87-L90
+
+    // let callback =
+    //    try (() => push("/app/login")) {
+    //    | Js.Exn.Error(e) => (() => Js.log(e))
+    //    };
     let callback =
       try (() => navigate("/app/login")) {
       | Js.Exn.Error(e) => (() => Js.log2("error", e))
@@ -70,7 +71,7 @@ let make = (~siteTitle: string, _children) => {
 
 [@bs.deriving abstract]
 type jsProps = {siteTitle: string};
-/* https://reasonml.github.io/reason-react/docs/en/interop#reactjs-using-reasonreact */
+// https://reasonml.github.io/reason-react/docs/en/interop#reactjs-using-reasonreact
 let default =
   ReasonReact.wrapReasonForJs(~component, jsProps =>
     make(~siteTitle=jsProps->siteTitleGet, [||])
