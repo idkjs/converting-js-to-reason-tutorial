@@ -1,6 +1,13 @@
-# Gatsby Auth starter with AWS Amplify
+# Converting Javascript to ReasonML
+
+![Kublai Kahn](images/medium-header.jpeg)
+
+## Gatsby Auth starter with AWS Amplify
+
+### Mostly ripped from [@dabit3](https://twitter.com/dabit3)'s [gatsby-auth-starter-aws-amplify](https://github.com/dabit3/gatsby-auth-starter-aws-amplify)
 
 This auth starter implements a basic authentication flow for signing up signing in users as well as protected client side routing using [AWS Amplify](https://amplify.aws). Auth features:
+
 - User sign up
 - User sign in
 - Multi-factor Authentication
@@ -144,18 +151,4 @@ Yes, people, this is how development looks for me. Feel free to suggest a better
 
 Now run `yarn dev` or `gatsby develop` and check your browser. We should have the same result as we previously had from `index.js`.
 
-## Hosting with the AWS Amplify Console
-
-The AWS Amplify Console provides continuous deployment and hosting for modern web apps (single page apps and static site generators). Continuous deployment allows developers to deploy updates to their web app on every code commit to their Git repository. If the build succeeds, the app is deployed and hosted on a global CDN with an *amplifyapp.com* domain. The Amplify Console offers globally available CDNs, easy custom domain setup, feature branch deployments, and password protection.
-
-1. Push your code to a Git repository of your choice.
-1. Login to the [AWS Amplify Console](https://console.aws.amazon.com/amplify/home) and choose **Connect app**
-1. Connect your repository and branch.
-1. Accept the default build settings.
-1. Give the Amplify Console permission to deploy backend resources with your frontend. This will allow the Console to detect changes to your backend on every code commit. If you do not have a service role, follow the prompts to create one.
-1. Review your changes and then choose **Save and deploy**. You app will now be available at `https://master.unique-id.amplifyapp.com`.
-
-<!-- <img src="https://github.com/swaminator/gatsby-auth-starter-aws-amplify/blob/master/src/images/amplify-console.gif" width="800"/> -->
-![Amplify Console](src/images/amplify-console.gif)
-
-You can now continuously deploy changes to your frontend or backend and Amplify will automatically deploy those changes.
+Show me the [code](https://github.com/idkjs/converting-js-to-reason-tutorial).
